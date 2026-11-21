@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>fmly</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="fmly er familieappen som forstår turnus. Vaktene dine inn i familiekalenderen, sammen med middag, handleliste og barnas aktiviteter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: én spalte, maks 56rem. Turnusrutenettet er sidens eneste bilde. */
+:root{
+  --bg:#F4F2ED; --surface:#FFFFFF; --surface-2:#EAE7E0;
+  --fg:#1B1E1B; --muted:#666C64; --line:#DEDAD2;
+  --accent:#3F6B4A; --accent-ink:#FFFFFF; --accent-soft:#E4EBE4;
+  --shift-d:#3F6B4A; --shift-k:#B07A2B; --shift-n:#4A5B86;
+  --font-display:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13150F; --surface:#1C1F1A; --surface-2:#262A23;
+  --fg:#ECEEE8; --muted:#9BA294; --line:#2F342C;
+  --accent:#7FAE89; --accent-ink:#11160F; --accent-soft:#232C23;
+  --shift-d:#7FAE89; --shift-k:#D6A75C; --shift-n:#8FA3D4;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#13150F; --surface:#1C1F1A; --surface-2:#262A23;
+  --fg:#ECEEE8; --muted:#9BA294; --line:#2F342C;
+  --accent:#7FAE89; --accent-ink:#11160F; --accent-soft:#232C23;
+  --shift-d:#7FAE89; --shift-k:#D6A75C; --shift-n:#8FA3D4;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{width:100%;max-width:56rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-0.02em}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:700}
+h2{font-size:clamp(1.4rem,3.4vw,1.9rem);font-weight:600}
+h3{font-size:1.05rem;font-weight:600;letter-spacing:-0.01em}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:clamp(1.05rem,2.3vw,1.2rem);color:var(--muted);max-width:34em}
+.logo{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:-0.04em;color:var(--accent)}
+header{padding-block:1.6rem}
+header .wrap{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap}
+header .tag{font-size:.85rem;color:var(--muted)}
+.hero{padding-block:1rem 3.5rem}
+.hero .wrap{display:flex;flex-direction:column;gap:1.6rem}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:start}
+@media (min-width:860px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:3rem}}
+.hero-copy{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.turnus-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem;min-width:0}
+.turnus-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.9rem}
+.turnus-head .t{font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+table.turnus{width:100%;border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums}
+table.turnus th{font-size:.68rem;font-weight:600;color:var(--muted);padding-bottom:.2rem}
+table.turnus th.wk{text-align:left;font-size:.68rem;padding-right:.4rem}
+table.turnus td{text-align:center;font-size:.72rem;font-weight:600;padding:.42rem .1rem;border-radius:7px;background:var(--surface-2);color:var(--muted)}
+table.turnus td.d{background:var(--accent-soft);color:var(--shift-d)}
+table.turnus td.k{background:color-mix(in srgb,var(--shift-k) 16%,var(--surface));color:var(--shift-k)}
+table.turnus td.n{background:color-mix(in srgb,var(--shift-n) 16%,var(--surface));color:var(--shift-n)}
+td.wk{background:none!important;text-align:left!important;color:var(--muted)!important;font-weight:500!important;font-size:.7rem!important;white-space:nowrap;padding-right:.4rem!important}
+.turnus-foot{margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted);display:flex;justify-content:space-between;gap:.8rem;flex-wrap:wrap}
+.legend{display:flex;gap:.8rem;font-size:.75rem;color:var(--muted);margin-top:.7rem;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:.33rem}
+.dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--accent);color:var(--accent-ink);font-family:var(--font-display);font-weight:600;font-size:1rem;border:0;border-radius:11px;padding:.85rem 1.5rem;cursor:pointer;text-decoration:none;transition:filter .15s ease}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section{padding-block:3rem}
+.band{background:var(--surface)}
+.cols{display:grid;grid-template-columns:1fr;gap:1.6rem;margin-top:1.8rem}
+@media (min-width:720px){.cols{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.col{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.col p{color:var(--muted);font-size:.95rem}
+.rest{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+.chip{background:var(--surface-2);border-radius:999px;padding:.4rem .85rem;font-size:.88rem;color:var(--fg)}
+.signup{background:var(--accent-soft);border-radius:20px;padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:1.1rem}
+form{display:flex;flex-direction:column;gap:.85rem;max-width:30rem}
+label{font-size:.88rem;font-weight:500;display:flex;flex-direction:column;gap:.35rem}
+input{font:inherit;font-size:1rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);width:100%}
+.hint{font-size:.82rem;color:var(--muted)}
+.status{font-size:.92rem;padding:.8rem 1rem;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.status.err{color:var(--shift-k)}
+footer{padding-block:2.5rem 3rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;flex-direction:column;gap:.5rem}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">fmly</span>
+    <span class="tag">Familieapp for norske hjem</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Under utvikling &middot; s&oslash;ker testpiloter</span>
+        <h1>Familieappen som forst&aring;r turnus</h1>
+        <p class="lede">Legg inn rotasjonen din &eacute;n gang. Resten av familien ser n&aring;r du er p&aring; jobb, og appen vet hvem som kan hente n&aring;r skiftet snur.</p>
+        <div><a class="btn" href="#testpilot">Bli testpilot</a></div>
+      </div>
+
+      <div class="turnus-card">
+        <div class="turnus-head">
+          <span class="t">Turnus &middot; 6 uker</span>
+          <span class="t">Uke 1 av 6</span>
+        </div>
+        <table class="turnus">
+          <thead>
+            <tr><th class="wk"></th><th>M</th><th>T</th><th>O</th><th>T</th><th>F</th><th>L</th><th>S</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="wk">Uke 1</td><td class="d">D</td><td>&ndash;</td><td class="d">D</td><td class="k">K</td><td class="k">K</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td class="wk">Uke 2</td><td>&ndash;</td><td class="d">D</td><td class="d">D</td><td>&ndash;</td><td>&ndash;</td><td class="k">K</td><td class="k">K</td></tr>
+            <tr><td class="wk">Uke 3</td><td class="n">N</td><td class="n">N</td><td>&ndash;</td><td>&ndash;</td><td class="d">D</td><td class="d">D</td><td>&ndash;</td></tr>
+            <tr><td class="wk">Uke 4</td><td>&ndash;</td><td>&ndash;</td><td class="k">K</td><td class="k">K</td><td>&ndash;</td><td class="d">D</td><td class="d">D</td></tr>
+            <tr><td class="wk">Uke 5</td><td class="d">D</td><td class="d">D</td><td>&ndash;</td><td class="n">N</td><td class="n">N</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td class="wk">Uke 6</td><td>&ndash;</td><td>&ndash;</td><td class="d">D</td><td class="d">D</td><td class="k">K</td><td>&ndash;</td><td>&ndash;</td></tr>
+          </tbody>
+        </table>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--shift-d)"></i>Dag</span>
+          <span><i class="dot" style="background:var(--shift-k)"></i>Kveld</span>
+          <span><i class="dot" style="background:var(--shift-n)"></i>Natt</span>
+          <span><i class="dot" style="background:var(--surface-2)"></i>Fri</span>
+        </div>
+        <div class="turnus-foot">
+          <span>Neste vakt: mandag 07:00&ndash;15:00</span>
+          <span>Delt med husstanden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Hvorfor turnus f&oslash;rst</h2>
+    <p class="lede" style="margin-top:.7rem">Familiekalendere er bygget for folk som jobber &aring;tte til fire. G&aring;r du skift, blir uken aldri lik, og da stemmer ingenting.</p>
+    <div class="cols">
+      <div class="col">
+        <h3>Rotasjonen legges inn &eacute;n gang</h3>
+        <p>Du beskriver turnusen din som den faktisk er, med vaktkoder du kjenner igjen. Appen regner ut resten av &aring;ret selv.</p>
+      </div>
+      <div class="col">
+        <h3>Familien ser n&aring;r du er p&aring; jobb</h3>
+        <p>Vaktene ligger i den delte kalenderen. Ingen trenger &aring; sp&oslash;rre, og ingen trenger &aring; skrive dem inn p&aring; nytt.</p>
+      </div>
+      <div class="col">
+        <h3>Henting og levering g&aring;r opp</h3>
+        <p>Barnas aktiviteter st&aring;r sammen med vaktene, s&aring; det er synlig hvem som rekker fotballtreningen p&aring; mandag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Og resten av hverdagen</h2>
+    <p class="lede" style="margin-top:.7rem">fmly er en hel familieapp. Hjem-skjermen viser det som gjelder akkurat n&aring;, i stedet for en meny du m&aring; lete i.</p>
+    <div class="rest">
+      <span class="chip">Delt kalender</span>
+      <span class="chip">Middagsplan</span>
+      <span class="chip">Handleliste i sanntid</span>
+      <span class="chip">Gj&oslash;rem&aring;l</span>
+      <span class="chip">Barn, skoletider og SFO</span>
+      <span class="chip">Kvitteringer og garanti</span>
+      <span class="chip">Faste avtaler</span>
+      <span class="chip">Barn som bor to steder</span>
+    </div>
+  </div>
+</section>
+
+<section id="testpilot">
+  <div class="wrap">
+    <div class="signup">
+      <div style="display:flex;flex-direction:column;gap:.6rem">
+        <span class="eyebrow">Lukket beta</span>
+        <h2>Bli testpilot</h2>
+        <p class="lede">Appen er ferdig nok til &aring; brukes hver dag, men ikke i App Store enn&aring;. Legg igjen e-postadressen din, s&aring; sender jeg deg en invitasjon n&aring;r neste pulje slipper inn.</p>
+      </div>
+
+      <form id="signup-form" novalidate>
+        <label for="epost">E-postadresse
+          <input id="epost" name="epost" type="email" autocomplete="email" required placeholder="din@epost.no">
+        </label>
+        <label for="turnus">Hva slags turnus g&aring;r du? <span class="hint" style="font-weight:400">Valgfritt</span>
+          <input id="turnus" name="turnus" type="text" autocomplete="off" placeholder="Sykehus, 6-ukers, dag og kveld">
+        </label>
+        <button class="btn" type="submit" id="signup-btn">Meld meg p&aring;</button>
+        <p class="hint">Adressen brukes bare til &aring; sende deg invitasjonen. Ingen nyhetsbrev, og den deles ikke videre.</p>
+      </form>
+
+      <div class="status" id="signup-status" hidden></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>fmly lages av Kenneth Skretteberg i H&oslash;nefoss.</p>
+    <p>Sp&oslash;rsm&aring;l: <a href="mailto:post@fmly.no">post@fmly.no</a></p>
+    <p>Appen har ingen annonser og ingen sporing.</p>
+  </div>
+</footer>
+
+<script>
+/* ---- Fyll inn foer publisering ---- */
+var SUPABASE_URL = "https://qpiletssznhmftinbbnr.supabase.co";
+var SUPABASE_KEY = "sb_publishable_9AvUmsv37TzzwM_yhlx9zw_1eMsl_T7";
+/* --------------------------------- */
+
+(function () {
+  var form = document.getElementById("signup-form");
+  var btn = document.getElementById("signup-btn");
+  var box = document.getElementById("signup-status");
+
+  function show(msg, isError) {
+    box.textContent = msg;
+    box.className = isError ? "status err" : "status";
+    box.hidden = false;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var epost = document.getElementById("epost").value.trim();
+    var turnus = document.getElementById("turnus").value.trim();
+
+    if (!epost || epost.indexOf("@") < 1 || epost.indexOf(".") < 0) {
+      show("Skriv inn en gyldig e-postadresse.", true);
+      return;
+    }
+    if (SUPABASE_KEY.indexOf("SETT_INN") === 0) {
+      show("Skjemaet er ikke koblet til databasen ennå.", true);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sender …";
+
+    fetch(SUPABASE_URL + "/rest/v1/testpilot", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({ epost: epost, turnus: turnus || null })
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.hidden = true;
+          show("Takk. Du står på listen, og du hører fra meg når neste pulje slipper inn.", false);
+        } else if (res.status === 409) {
+          form.hidden = true;
+          show("Du står allerede på listen. Du hører fra meg.", false);
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = "Meld meg på";
+        show("Noe gikk galt. Prøv igjen, eller send en e-post til post@fmly.no.", true);
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
