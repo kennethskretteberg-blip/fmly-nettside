@@ -80,6 +80,11 @@ section{padding-block:3rem}
 @media (min-width:720px){.cols{grid-template-columns:repeat(3,1fr);gap:2rem}}
 .col{display:flex;flex-direction:column;gap:.5rem;min-width:0}
 .col p{color:var(--muted);font-size:.95rem}
+.features{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.8rem}
+@media (min-width:620px){.features{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:920px){.features{grid-template-columns:repeat(3,1fr)}}
+.feature{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.feature p{color:var(--muted);font-size:.93rem}
 .rest{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
 .chip{background:var(--surface-2);border-radius:999px;padding:.4rem .85rem;font-size:.88rem;color:var(--fg)}
 .signup{background:var(--accent-soft);border-radius:20px;padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:1.1rem}
@@ -149,6 +154,40 @@ footer a{color:var(--accent)}
 
 <section class="band">
   <div class="wrap">
+    <h2>Hele hverdagen, ikke bare vaktene</h2>
+    <p class="lede" style="margin-top:.7rem">Turnus er det fmly gj&oslash;r som ingen andre gj&oslash;r. Resten er en komplett familieapp, og den virker like godt om du jobber helt vanlig dagtid.</p>
+    <div class="features">
+      <div class="feature">
+        <h3>Delt kalender</h3>
+        <p>Hele husstanden ser det samme, med norske helligdager og ukenummer. Legger én inn noe, vet alle det.</p>
+      </div>
+      <div class="feature">
+        <h3>Barn og aktiviteter</h3>
+        <p>Skoletider, SFO og faste aktiviteter per barn &mdash; med hvem som henter og hvem som leverer.</p>
+      </div>
+      <div class="feature">
+        <h3>Middag og handleliste</h3>
+        <p>Velg ukens middager, og handlelisten fyller seg selv. Listen oppdateres i sanntid mens dere st&aring;r i butikken.</p>
+      </div>
+      <div class="feature">
+        <h3>Gj&oslash;rem&aring;l</h3>
+        <p>Oppgaver med navn p&aring;. Det blir synlig hvem som faktisk b&aelig;rer hva i uka som g&aring;r.</p>
+      </div>
+      <div class="feature">
+        <h3>Kvitteringer og garanti</h3>
+        <p>Videresend kvitteringen p&aring; e-post, eller ta et bilde. Appen leser bel&oslash;p, butikk og dato, og du godkjenner.</p>
+      </div>
+      <div class="feature">
+        <h3>N&aring;r barna bor to steder</h3>
+        <p>Et barn kan h&oslash;re til to husstander. Begge hjem ser aktivitetene, uten at dere m&aring; dele alt annet.</p>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:1.5rem">P&aring; vei: import av aktiviteter fra Spond og liknende, s&aring; treninger og kamper havner i familiekalenderen uten at noen skriver dem inn.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>Hvorfor turnus f&oslash;rst</h2>
     <p class="lede" style="margin-top:.7rem">Familiekalendere er bygget for folk som jobber &aring;tte til fire. G&aring;r du skift, blir uken aldri lik, og da stemmer ingenting.</p>
     <div class="cols">
@@ -164,23 +203,6 @@ footer a{color:var(--accent)}
         <h3>Henting og levering g&aring;r opp</h3>
         <p>Barnas aktiviteter st&aring;r sammen med vaktene, s&aring; det er synlig hvem som rekker fotballtreningen p&aring; mandag.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Og resten av hverdagen</h2>
-    <p class="lede" style="margin-top:.7rem">fmly er en hel familieapp. Hjem-skjermen viser det som gjelder akkurat n&aring;, i stedet for en meny du m&aring; lete i.</p>
-    <div class="rest">
-      <span class="chip">Delt kalender</span>
-      <span class="chip">Middagsplan</span>
-      <span class="chip">Handleliste i sanntid</span>
-      <span class="chip">Gj&oslash;rem&aring;l</span>
-      <span class="chip">Barn, skoletider og SFO</span>
-      <span class="chip">Kvitteringer og garanti</span>
-      <span class="chip">Faste avtaler</span>
-      <span class="chip">Barn som bor to steder</span>
     </div>
   </div>
 </section>
