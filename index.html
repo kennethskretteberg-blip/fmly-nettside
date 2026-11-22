@@ -83,6 +83,105 @@ section{padding-block:3rem}
 .features{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.8rem}
 @media (min-width:620px){.features{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:920px){.features{grid-template-columns:repeat(3,1fr)}}
+
+/* Telefongjengivelse: appens egne farger, uavhengig av sidens tema */
+.showcase{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:center;margin-top:1.8rem}
+@media (min-width:860px){.showcase{grid-template-columns:320px 1fr;gap:3.2rem}}
+/* Ramme etter iPhone 18 Pro: skjerm 2622x1206 px, kropp 150,0 x 71,9 mm */
+.phone{--p-bg:#F2F0EB;--p-card:#FFFFFF;--p-ink:#1A1C19;--p-mut:#7D847B;--p-ac:#4A7A55;--p-tile:#E7EEE7;--p-line:#E2E0D9;
+  width:100%;max-width:300px;margin-inline:auto;padding:8px;border-radius:42px;
+  background:linear-gradient(150deg,#3a3a3c,#1c1c1e 45%,#3a3a3c);
+  box-shadow:0 22px 50px rgba(0,0,0,.28);color:var(--p-ink);font-size:13px;line-height:1.45}
+.p-screen{aspect-ratio:1206/2622;border-radius:34px;overflow:hidden;background:var(--p-bg);
+  display:flex;flex-direction:column}
+.p-status{display:flex;align-items:center;justify-content:space-between;padding:.55rem .95rem .15rem;
+  font-size:11px;font-weight:600;flex:0 0 auto}
+.p-island{width:68px;height:19px;border-radius:999px;background:#0b0b0c}
+.p-sig{display:flex;align-items:center;gap:3px;color:var(--p-ink)}
+.p-sig svg{width:14px;height:11px}
+.p-batt{width:20px;height:10px;border:1.2px solid currentColor;border-radius:3px;position:relative;display:inline-block}
+.p-batt::after{content:"";position:absolute;inset:1.5px;width:62%;background:currentColor;border-radius:1px}
+.p-batt::before{content:"";position:absolute;right:-3px;top:3px;width:1.6px;height:4px;background:currentColor;border-radius:0 1px 1px 0}
+.p-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+
+.p-av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:10px;flex:0 0 auto}
+.p-av.mh{background:#E1EBE2;color:#3F6B4A}.p-av.jh{background:#E2E6F2;color:#45548C}
+.p-av.em{background:#F3E8D2;color:#9A6A20}.p-av.os{background:#EEE4EC;color:#7A4A6E}
+.p-top .p-av{width:30px;height:30px;font-size:11px}
+.p-chip{display:inline-block;margin-top:.22rem;background:#F3E8D2;color:#9A6A20;border-radius:999px;
+  padding:.08rem .45rem;font-size:9.5px;font-weight:700}
+.p-foot{color:var(--p-mut);font-size:10.5px;margin-top:.6rem}
+.p-item{display:flex;align-items:flex-start;gap:.55rem;background:var(--p-card);border-radius:12px;
+  padding:.5rem .7rem;margin-bottom:.3rem}
+.p-box{width:15px;height:15px;border-radius:5px;border:1.5px solid #C9CEC7;flex:0 0 auto;margin-top:.1rem}
+.p-box.on{background:var(--p-ac);border-color:var(--p-ac)}
+.p-main.struck{text-decoration:line-through;color:var(--p-mut);font-weight:500}
+.p-card.now{box-shadow:inset 0 0 0 1.5px var(--p-ac)}
+.p-kid{background:var(--p-card);border-radius:15px;padding:.7rem .8rem;margin-bottom:.5rem}
+.p-kidtop{display:flex;align-items:center;gap:.55rem;margin-bottom:.4rem}
+button.p-pill{border:0;font:inherit;cursor:pointer}
+
+.p-date{color:var(--p-mut);font-weight:600;font-size:13px}
+.p-card{background:var(--p-card);border-radius:15px;padding:.7rem .8rem;display:flex;align-items:center;gap:.65rem;margin-bottom:.5rem}
+.p-tile{width:34px;height:34px;border-radius:10px;background:var(--p-tile);color:var(--p-ac);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.p-tile svg{width:17px;height:17px}
+.p-grow{min-width:0;flex:1}
+.p-lab{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--p-mut);font-weight:600}
+.p-main{font-weight:600;font-size:14px}
+.p-sub{color:var(--p-mut);font-size:11.5px}
+.p-pill{background:var(--p-ac);color:#fff;border-radius:999px;padding:.3rem .75rem;font-size:11.5px;font-weight:600;flex:0 0 auto}
+.p-pill.ghost{background:var(--p-tile);color:var(--p-ac)}
+.p-sec{font-size:11px;font-weight:700;color:var(--p-mut);margin:.9rem 0 .45rem}
+.p-strip{background:rgba(255,255,255,.55);border-radius:13px;padding:.6rem .8rem}
+.p-nav{display:flex;justify-content:space-between;align-items:center;flex:0 0 auto;
+  padding:.5rem .8rem .75rem;border-top:1px solid var(--p-line);color:var(--p-mut);font-size:9.5px;text-align:center}
+.p-nav span{flex:1}
+.p-nav .on{color:var(--p-ac);font-weight:600}
+.p-fab{width:34px;height:34px;border-radius:50%;background:var(--p-ac);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:19px;line-height:1;flex:0 0 auto}
+
+.p-view{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 .95rem;
+  scrollbar-width:thin;scrollbar-color:#CFCCC4 transparent}
+.p-view::-webkit-scrollbar{width:5px}
+.p-view::-webkit-scrollbar-thumb{background:#CFCCC4;border-radius:3px}
+.p-view::-webkit-scrollbar-track{background:transparent}
+.p-title{font-weight:700;font-size:16px;margin:.1rem 0 .3rem}
+.p-row{display:flex;align-items:center;gap:.65rem;width:100%;text-align:left;background:var(--p-card);
+  border:0;border-radius:15px;padding:.6rem .8rem;margin-bottom:.4rem;font:inherit;color:inherit;cursor:default}
+button.p-row{cursor:pointer}
+.p-arrow{color:var(--p-mut);font-size:17px;line-height:1}
+.p-segs{display:flex;background:var(--p-card);border-radius:999px;padding:.2rem;margin-bottom:.6rem;font-size:12px;font-weight:600}
+.p-segs span{flex:1;text-align:center;padding:.28rem 0;border-radius:999px;color:var(--p-mut)}
+.p-segs .on{background:var(--p-ac);color:#fff}
+.p-wk{text-align:center;font-weight:700;font-size:13px;margin-bottom:.5rem}
+.p-days{display:flex;gap:.2rem;margin-bottom:.3rem}
+.p-days span{flex:1;text-align:center;font-size:11px;font-weight:600}
+.p-days i{display:block;font-style:normal;font-size:9.5px;color:var(--p-mut);font-weight:600}
+.p-days span:first-child{color:var(--p-ac)}
+.p-draft{background:var(--p-card);border-radius:15px;padding:.75rem .85rem}
+.p-kv{display:flex;justify-content:space-between;font-size:12px;color:var(--p-mut);padding:.12rem 0}
+.p-kv b{color:var(--p-ink)}
+.p-kv.tot{border-top:1px solid var(--p-line);margin-top:.3rem;padding-top:.35rem}
+.p-acts{display:flex;gap:.4rem;margin-top:.6rem}
+.p-back{background:var(--p-card);border:0;border-radius:999px;padding:.25rem .7rem;font:inherit;font-size:12px;
+  font-weight:600;color:var(--p-ac);margin-bottom:.4rem;cursor:pointer}
+.p-cancel{width:100%;background:none;border:0;font:inherit;font-size:13px;color:var(--p-mut);padding:.6rem;cursor:pointer}
+.p-grid{width:100%;border-collapse:separate;border-spacing:2px;font-size:10.5px;font-variant-numeric:tabular-nums}
+.p-grid th{font-size:9.5px;color:var(--p-mut);font-weight:600}
+.p-grid td{text-align:center;font-weight:600;padding:.3rem 0;border-radius:6px;background:#E9E7E0;color:var(--p-mut)}
+.p-grid td.wk{background:none;text-align:left;font-size:10px;font-weight:500;padding-right:.3rem}
+.p-grid td.d{background:#E1EBE2;color:#3F6B4A}
+.p-grid td.k{background:#F3E8D2;color:#9A6A20}
+.p-grid td.n{background:#E2E6F2;color:#45548C}
+.p-legend{display:flex;gap:.6rem;font-size:10px;color:var(--p-mut);margin-top:.5rem;flex-wrap:wrap}
+.p-legend span{display:inline-flex;align-items:center;gap:.25rem}
+.pd{width:8px;height:8px;border-radius:2px;background:#E9E7E0;display:inline-block}
+.pd.d{background:#3F6B4A}.pd.k{background:#B07A2B}.pd.n{background:#4A5B86}
+.p-nav button{background:none;border:0;font:inherit;font-size:9.5px;color:var(--p-mut);cursor:pointer;flex:1;padding:.2rem 0}
+.p-nav button.on{color:var(--p-ac);font-weight:600}
+.p-nav .p-fab{flex:0 0 auto;width:34px;height:34px;padding:0;border-radius:50%;background:var(--p-ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1}
 .ficon{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:.35rem}
 .ficon svg{width:20px;height:20px;display:block}
 .feature{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem;min-width:0}
@@ -215,6 +314,138 @@ footer a{color:var(--accent)}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <h2>Pr&oslash;v den her</h2>
+    <p class="lede" style="margin-top:.7rem">Trykk deg rundt. Dette er familien Haugen sin uke, gjengitt i nettleseren.</p>
+    <div class="showcase">
+      <div class="phone">
+        <div class="p-screen">
+        <div class="p-status">
+          <span>09:41</span>
+          <span class="p-island"></span>
+          <span class="p-sig"><svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="2.6" height="4" rx="1"/><rect x="4.2" y="6" width="2.6" height="6" rx="1"/><rect x="8.4" y="3.5" width="2.6" height="8.5" rx="1"/><rect x="12.6" y="1" width="2.6" height="11" rx="1"/></svg><svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4.2a11 11 0 0 1 15 0"/><path d="M4.3 7a7 7 0 0 1 9.4 0"/><circle cx="9" cy="10.2" r=".9" fill="currentColor" stroke="none"/></svg><span class="p-batt"></span></span>
+        </div>
+
+        <div class="p-view" data-screen="hjem">
+          <div class="p-top"><span class="p-av mh">MH</span><span class="p-date">Mandag 23. november</span></div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 17a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.3 2A3.5 3.5 0 0 0 6.5 17z"/></svg></span><span class="p-grow"><span class="p-main">&minus;1&deg; &middot; Delvis skyet</span></span></div>
+          <div class="p-sec">I fokus</div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a2.5 2.5 0 0 0 5 0V3"/><path d="M8.5 8v13"/><path d="M18 3c-1.6 1.8-2.3 3.4-2.3 5.2S16.4 11 18 11"/><path d="M18 3v18"/></svg></span><span class="p-grow"><span class="p-lab">Middag</span><br><span class="p-main">Fiskegrateng &middot; i dag</span></span></div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M2.5 3h2.2l2.3 11.3a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.3L21 6.5H6"/></svg></span><span class="p-grow"><span class="p-lab">Handleliste</span><br><span class="p-main">Ukehandel</span><span class="p-sub">13 varer igjen</span></span><button type="button" class="p-pill" data-go="handleliste">Vis</button></div>
+          <div class="p-sec">Snart</div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-lab">I dag 17:00</span><br><span class="p-main">Fotball &middot; Emma</span><span class="p-sub">Jonas henter og leverer</span></span><span class="p-av jh">JH</span></div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 5.8 9.3 9 6"/><path d="M4 16.5 5.8 18.3 9 15"/><path d="M13 8h7"/><path d="M13 17h7"/></svg></span><span class="p-grow"><span class="p-lab">Gj&oslash;rem&aring;l</span><br><span class="p-main">2 gj&oslash;rem&aring;l</span></span><button type="button" class="p-pill ghost" data-go="gjoremal">Vis</button></div>
+          <div class="p-strip"><span class="p-lab">I morgen</span><br><span class="p-sub">Marte p&aring; dagvakt &middot; kj&oslash;ttkaker &middot; s&oslash;ppel ut</span></div>
+        </div>
+
+        <div class="p-view" data-screen="kalender" hidden>
+          <div class="p-segs"><span>Dag</span><span class="on">Uke</span><span>M&aring;ned</span></div>
+          <div class="p-wk">Uke 48 &middot; November 2026</div>
+          <div class="p-days"><span><i>Ma</i>23</span><span><i>Ti</i>24</span><span><i>On</i>25</span><span><i>To</i>26</span><span><i>Fr</i>27</span><span><i>L&oslash;</i>28</span><span><i>S&oslash;</i>29</span></div>
+          <div class="p-sec">I dag</div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-main">17:00 &middot; Fotballtrening</span><span class="p-sub">Emma &middot; Jonas henter</span><span class="p-chip">Fra Spond</span></span><span class="p-av em">E</span></div>
+          <div class="p-sec">Onsdag</div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-main">17:30 &middot; Sv&oslash;mmekurs</span><span class="p-sub">Oskar &middot; Jonas henter</span></span><span class="p-av os">O</span></div>
+          <div class="p-sec">Torsdag</div>
+          <div class="p-card"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-main">18:00 &middot; Korps</span><span class="p-sub">Emma &middot; Marte leverer</span></span><span class="p-av em">E</span></div>
+          <p class="p-foot">Import fra Spond er planlagt, og finnes ikke i appen enn&aring;.</p>
+        </div>
+
+        <div class="p-view" data-screen="inbox" hidden>
+          <div class="p-title">Inbox</div>
+          <div class="p-sec">Til gjennomgang</div>
+          <div class="p-draft">
+            <div class="p-lab">Kvittering &middot; fra e-post</div>
+            <div class="p-main" style="margin:.15rem 0 .4rem">Regnjakke, Oskar</div>
+            <div class="p-kv"><span>Kj&oslash;pesum</span><b>649 kr</b></div>
+            <div class="p-kv"><span>Frakt</span><b>59 kr</b></div>
+            <div class="p-kv tot"><span>Totalt</span><b>708 kr</b></div>
+            <div class="p-acts"><span class="p-pill">Godta</span><span class="p-pill ghost">Se eller rediger</span></div>
+          </div>
+          <p class="p-foot">Bel&oslash;p, butikk og dato er lest ut automatisk. Du bestemmer om den skal inn.</p>
+        </div>
+
+        <div class="p-view" data-screen="legg" hidden>
+          <div class="p-title">Legg til</div>
+          <div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg></span><span class="p-grow"><span class="p-main">Hendelse</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-main">Aktivitet</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 5.8 9.3 9 6"/><path d="M4 16.5 5.8 18.3 9 15"/><path d="M13 8h7"/><path d="M13 17h7"/></svg></span><span class="p-grow"><span class="p-main">Gj&oslash;rem&aring;l</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M2.5 3h2.2l2.3 11.3a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.3L21 6.5H6"/></svg></span><span class="p-grow"><span class="p-main">Handleliste</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a2.5 2.5 0 0 0 5 0V3"/><path d="M8.5 8v13"/><path d="M18 3c-1.6 1.8-2.3 3.4-2.3 5.2S16.4 11 18 11"/><path d="M18 3v18"/></svg></span><span class="p-grow"><span class="p-main">Middag</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h3.3l1.5-2.2h8.4l1.5 2.2H21v10a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/><circle cx="12" cy="13.5" r="3.3"/></svg></span><span class="p-grow"><span class="p-main">Kvittering (ta bilde)</span></span><span class="p-arrow">&rsaquo;</span></div>
+          <button type="button" class="p-cancel" data-go="hjem">Avbryt</button>
+        </div>
+
+        <div class="p-view" data-screen="mer" hidden>
+          <div class="p-title">Mer</div>
+          <div class="p-sec">Barn</div>
+          <button type="button" class="p-row" data-go="barn"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/></svg></span><span class="p-grow"><span class="p-main">Barn</span></span><span class="p-arrow">&rsaquo;</span></button>
+          <div class="p-sec">Hverdag</div>
+          <button type="button" class="p-row" data-go="handleliste"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M2.5 3h2.2l2.3 11.3a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.6-1.3L21 6.5H6"/></svg></span><span class="p-grow"><span class="p-main">Handleliste</span></span><span class="p-arrow">&rsaquo;</span></button><button type="button" class="p-row" data-go="gjoremal"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 5.8 9.3 9 6"/><path d="M4 16.5 5.8 18.3 9 15"/><path d="M13 8h7"/><path d="M13 17h7"/></svg></span><span class="p-grow"><span class="p-main">Gj&oslash;rem&aring;l</span></span><span class="p-arrow">&rsaquo;</span></button><button type="button" class="p-row" data-go="middag"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a2.5 2.5 0 0 0 5 0V3"/><path d="M8.5 8v13"/><path d="M18 3c-1.6 1.8-2.3 3.4-2.3 5.2S16.4 11 18 11"/><path d="M18 3v18"/></svg></span><span class="p-grow"><span class="p-main">Middag</span></span><span class="p-arrow">&rsaquo;</span></button><button type="button" class="p-row" data-go="oppskrifter"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.8-1.6-4-2.2-7-2v12c3-.2 5.2.4 7 2 1.8-1.6 4-2.2 7-2V5c-3-.2-5.2.4-7 2z"/><path d="M12 7v12"/></svg></span><span class="p-grow"><span class="p-main">Oppskrifter</span></span><span class="p-arrow">&rsaquo;</span></button><button type="button" class="p-row" data-go="turnus"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg></span><span class="p-grow"><span class="p-main">Turnus</span></span><span class="p-arrow">&rsaquo;</span></button>
+          <div class="p-sec">&Oslash;konomi og avtaler</div>
+          <div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg></span><span class="p-grow"><span class="p-main">Avtaler</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span><span class="p-grow"><span class="p-main">Kvitteringer</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="m4 7 8 4 8-4"/><path d="M12 11v10"/></svg></span><span class="p-grow"><span class="p-main">Eiendeler</span></span><span class="p-arrow">&rsaquo;</span></div>
+        </div>
+
+        <div class="p-view" data-screen="turnus" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Turnus</div>
+          <div class="p-lab" style="margin-bottom:.4rem">Turnus &middot; 6 uker &middot; Marte</div>
+          <table class="p-grid"><thead><tr><th></th><th>M</th><th>T</th><th>O</th><th>T</th><th>F</th><th>L</th><th>S</th></tr></thead><tbody><tr><td class="wk">Uke 1</td><td class="d">D</td><td class="">&ndash;</td><td class="d">D</td><td class="k">K</td><td class="k">K</td><td class="">&ndash;</td><td class="">&ndash;</td></tr><tr><td class="wk">Uke 2</td><td class="">&ndash;</td><td class="d">D</td><td class="d">D</td><td class="">&ndash;</td><td class="">&ndash;</td><td class="k">K</td><td class="k">K</td></tr><tr><td class="wk">Uke 3</td><td class="n">N</td><td class="n">N</td><td class="">&ndash;</td><td class="">&ndash;</td><td class="d">D</td><td class="d">D</td><td class="">&ndash;</td></tr><tr><td class="wk">Uke 4</td><td class="">&ndash;</td><td class="">&ndash;</td><td class="k">K</td><td class="k">K</td><td class="">&ndash;</td><td class="d">D</td><td class="d">D</td></tr><tr><td class="wk">Uke 5</td><td class="d">D</td><td class="d">D</td><td class="">&ndash;</td><td class="n">N</td><td class="n">N</td><td class="">&ndash;</td><td class="">&ndash;</td></tr><tr><td class="wk">Uke 6</td><td class="">&ndash;</td><td class="">&ndash;</td><td class="d">D</td><td class="d">D</td><td class="k">K</td><td class="">&ndash;</td><td class="">&ndash;</td></tr></tbody></table>
+          <div class="p-legend"><span><i class="pd d"></i>Dag</span><span><i class="pd k"></i>Kveld</span><span><i class="pd n"></i>Natt</span><span><i class="pd"></i>Fri</span></div>
+          <div class="p-strip" style="margin-top:.7rem"><span class="p-sub">Neste vakt: mandag 07:00&ndash;15:00</span><br><span class="p-sub">Delt med husstanden</span></div>
+        </div>
+
+        <div class="p-view" data-screen="barn" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Barn</div>
+          <div class="p-kid">
+            <div class="p-kidtop"><span class="p-av em">E</span><span class="p-grow"><span class="p-main">Emma, 9 &aring;r</span><span class="p-sub">4. trinn &middot; SFO man&ndash;ons</span></span></div>
+            <div class="p-kv"><span>Fotballtrening</span><b>Man 17:00</b></div>
+            <div class="p-kv"><span>Korps</span><b>Tor 18:00</b></div>
+            <div class="p-kv"><span>Skoletid</span><b>08:30&ndash;14:00</b></div>
+          </div>
+          <div class="p-kid">
+            <div class="p-kidtop"><span class="p-av os">O</span><span class="p-grow"><span class="p-main">Oskar, 6 &aring;r</span><span class="p-sub">1. trinn &middot; SFO hver dag</span></span></div>
+            <div class="p-kv"><span>Sv&oslash;mmekurs</span><b>Ons 17:30</b></div>
+            <div class="p-kv"><span>Skoletid</span><b>08:30&ndash;13:30</b></div>
+          </div>
+        </div>
+
+        <div class="p-view" data-screen="handleliste" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Ukehandel</div>
+          <div class="p-sub" style="margin-bottom:.3rem">13 av 17 igjen</div>
+          <div class="p-sec">Frukt og gr&oslash;nt</div><div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">Poteter</span></span></div><div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">Gulr&oslash;tter</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Brokkoli</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Paprika</span></span></div><div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">Bananer</span></span></div><div class="p-sec">Kj&oslash;tt og fisk</div><div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">Kj&oslash;ttdeig</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Kyllingfilet</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Laksefilet</span></span></div><div class="p-sec">Meieri</div><div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">Lettmelk</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Smør</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Revet ost</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">R&oslash;mme</span></span></div><div class="p-sec">T&oslash;rrvarer</div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Ris</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Tacokrydder</span></span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Tortillalefser</span></span></div>
+        </div>
+
+        <div class="p-view" data-screen="gjoremal" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Gj&oslash;rem&aring;l</div>
+          <div class="p-item"><span class="p-box on"></span><span class="p-grow"><span class="p-main struck">T&oslash;mme oppvaskmaskinen</span></span> <span class="p-av em">E</span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Sette ut s&oslash;ppel</span><span class="p-sub">Tirsdag</span></span> <span class="p-av os">O</span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Vaske badet</span><span class="p-sub">L&oslash;rdag</span></span> <span class="p-av jh">JH</span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Bestille time hos tannlegen</span><span class="p-sub">Denne uka</span></span> <span class="p-av mh">MH</span></div><div class="p-item"><span class="p-box"></span><span class="p-grow"><span class="p-main">Betale fotballavgiften</span><span class="p-sub">Frist fredag</span></span> <span class="p-av jh">JH</span></div>
+        </div>
+
+        <div class="p-view" data-screen="middag" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Middag</div>
+          <div class="p-card now"><span class="p-grow"><span class="p-lab">Mandag &middot; i dag</span><br><span class="p-main">Fiskegrateng</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">Tirsdag</span><br><span class="p-main">Kj&oslash;ttkaker i brun saus</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">Onsdag</span><br><span class="p-main">Tomatsuppe med makaroni</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">Torsdag</span><br><span class="p-main">Kylling og ris</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">Fredag</span><br><span class="p-main">Taco</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">L&oslash;rdag</span><br><span class="p-main">Hjemmelaget pizza</span></span></div><div class="p-card"><span class="p-grow"><span class="p-lab">S&oslash;ndag</span><br><span class="p-main">Ovnsbakt laks</span></span></div>
+          <button type="button" class="p-pill" style="margin-top:.5rem" data-go="handleliste">Lag handleliste</button>
+        </div>
+
+        <div class="p-view" data-screen="oppskrifter" hidden>
+          <button type="button" class="p-back" data-go="mer">&lsaquo; Mer</button><div class="p-title">Oppskrifter</div>
+          <div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.8-1.6-4-2.2-7-2v12c3-.2 5.2.4 7 2 1.8-1.6 4-2.2 7-2V5c-3-.2-5.2.4-7 2z"/><path d="M12 7v12"/></svg></span><span class="p-grow"><span class="p-main">Fiskegrateng</span><span class="p-sub">4 porsjoner &middot; 45 min</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.8-1.6-4-2.2-7-2v12c3-.2 5.2.4 7 2 1.8-1.6 4-2.2 7-2V5c-3-.2-5.2.4-7 2z"/><path d="M12 7v12"/></svg></span><span class="p-grow"><span class="p-main">Kj&oslash;ttkaker i brun saus</span><span class="p-sub">4 porsjoner &middot; 50 min</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.8-1.6-4-2.2-7-2v12c3-.2 5.2.4 7 2 1.8-1.6 4-2.2 7-2V5c-3-.2-5.2.4-7 2z"/><path d="M12 7v12"/></svg></span><span class="p-grow"><span class="p-main">Taco</span><span class="p-sub">5 porsjoner &middot; 30 min</span></span><span class="p-arrow">&rsaquo;</span></div><div class="p-row"><span class="p-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-1.8-1.6-4-2.2-7-2v12c3-.2 5.2.4 7 2 1.8-1.6 4-2.2 7-2V5c-3-.2-5.2.4-7 2z"/><path d="M12 7v12"/></svg></span><span class="p-grow"><span class="p-main">Ovnsbakt laks</span><span class="p-sub">4 porsjoner &middot; 35 min</span></span><span class="p-arrow">&rsaquo;</span></div>
+        </div>
+
+        <div class="p-nav">
+          <button type="button" data-go="hjem" class="on">Hjem</button>
+          <button type="button" data-go="kalender">Kalender</button>
+          <button type="button" data-go="legg" class="p-fab" aria-label="Legg til">+</button>
+          <button type="button" data-go="inbox">Inbox</button>
+          <button type="button" data-go="mer">Mer</button>
+        </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
+        <p>Hjem viser det som gjelder n&aring;, og kortene flytter seg gjennom dagen. Alt det andre ligger under Mer &mdash; ogs&aring; turnusen.</p>
+        <p>Trykk deg innom Inbox. Der ligger kvitteringer appen har lest for deg, med kj&oslash;pesum og frakt hver for seg, klare til godkjenning.</p>
+        <p class="hint">Gjengivelse av appen, bygget for nettsiden. Familien Haugen er oppdiktet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="testpilot">
   <div class="wrap">
     <div class="signup">
@@ -253,6 +484,30 @@ footer a{color:var(--accent)}
 var SUPABASE_URL = "https://qpiletssznhmftinbbnr.supabase.co";
 var SUPABASE_KEY = "sb_publishable_9AvUmsv37TzzwM_yhlx9zw_1eMsl_T7";
 /* --------------------------------- */
+
+
+(function () {
+  var phone = document.querySelector(".phone");
+  if (!phone) return;
+  var views = phone.querySelectorAll(".p-view");
+  var navs = phone.querySelectorAll(".p-nav button");
+  var SUB = ["turnus","barn","handleliste","gjoremal","middag","oppskrifter"];
+  function go(name) {
+    for (var i = 0; i < views.length; i++) {
+      views[i].hidden = views[i].getAttribute("data-screen") !== name;
+    }
+    for (var j = 0; j < navs.length; j++) {
+      var t = navs[j].getAttribute("data-go");
+      if (!navs[j].classList.contains("p-fab")) {
+        navs[j].classList.toggle("on", t === name || (SUB.indexOf(name) > -1 && t === "mer"));
+      }
+    }
+  }
+  phone.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (b) { go(b.getAttribute("data-go")); }
+  });
+})();
 
 (function () {
   var form = document.getElementById("signup-form");
